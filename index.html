@@ -6,6 +6,10 @@
     <title>Marudhan T | Senior Engineer - Hydraulics Module</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js Library for WebGL Canvas Graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -26,33 +30,86 @@
         }
     </script>
     <style>
+        /* Blueprint Grid & Glassmorphism Styling */
+        .blueprint-bg {
+            background-color: #030712;
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+        }
+
         .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
+
         .glass-card {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(8px);
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .glass-card:hover {
-            border-color: rgba(56, 189, 248, 0.4);
+            border-color: rgba(56, 189, 248, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(2, 132, 199, 0.3);
+        }
+
+        /* Blueprint Accent Line */
+        .blueprint-corner {
+            position: relative;
+        }
+        .blueprint-corner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 8px; height: 8px;
+            border-top: 2px solid #38bdf8;
+            border-left: 2px solid #38bdf8;
+        }
+        .blueprint-corner::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 8px; height: 8px;
+            border-bottom: 2px solid #38bdf8;
+            border-right: 2px solid #38bdf8;
+        }
+
+        /* Canvas Overlay */
+        #interactive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="blueprint-bg text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
+
+    <!-- Interactive 3D Canvas (Hydraulic Surface Ripples & CAD Geometry) -->
+    <canvas id="interactive-bg"></canvas>
 
     <!-- Navigation Header -->
     <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
             <a href="#hero" class="flex items-center gap-3 group">
                 <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-500 to-brand-accent flex items-center justify-between p-2 font-bold text-slate-950 text-xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
                     <span>M</span><span>T</span>
                 </div>
                 <div>
                     <span class="text-lg font-bold text-white tracking-wide block">MARUDHAN T</span>
-                    <span class="text-xs text-brand-400 font-mono">SENIOR ENGINEER - HYDRAULICS MODULE</span>
+                    <span class="text-xs text-brand-400 font-mono tracking-wider">SENIOR ENGINEER - HYDRAULICS MODULE</span>
                 </div>
             </a>
 
@@ -73,7 +130,7 @@
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-950/95 px-6 py-6 space-y-4">
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-950/95 px-6 py-6 space-y-4 relative z-10">
             <a href="#about" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">About</a>
             <a href="#experience" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Experience</a>
             <a href="#skills" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Skills & Tools</a>
@@ -84,32 +141,45 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-900/40 via-slate-950 to-slate-950 -z-10"></div>
+    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold tracking-wide uppercase">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold tracking-wide uppercase shadow-inner">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                         Product Development Center | L&T CE-IPDD IC
                     </div>
+                    
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
                         Senior Engineer <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-sky-300 to-brand-accent">
                             Hydraulics Module
                         </span>
                     </h1>
+                    
                     <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-                        Mechanical Engineering graduate specializing in **Hydraulic Routing, GA drawing, Creo PLM**, and advanced structural simulations using **MSC Patran & Nastran**. Exploring fundamental aircraft design principles and AI-driven R&D solutions. **Always ready to collaborate on new ideas and concepts.**
+                        Mechanical Engineering graduate specializing in **Hydraulic Routing, GA drawing, Creo PLM**, and structural FEA simulations using **MSC Patran & Nastran**. Exploring fundamental aircraft design principles and AI-driven R&D solutions. **Always ready to collaborate on new ideas and concepts.**
                     </p>
+
+                    <!-- Interactive Live Fluid-Pressure Metric Indicator -->
+                    <div class="p-4 rounded-xl glass-card border-l-4 border-l-brand-400 flex flex-wrap items-center justify-between gap-4 max-w-lg">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-water text-brand-400 text-2xl animate-pulse"></i>
+                            <div>
+                                <p class="text-xs text-slate-400 font-mono">HYDRAULIC FLOW RIPPLE ENGINE</p>
+                                <p class="text-sm font-bold text-white">Move cursor to trigger dynamic fluid wave displacement</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/30">ACTIVE</span>
+                    </div>
 
                     <!-- Quick Skill Tags -->
                     <div class="flex flex-wrap gap-2 pt-2">
-                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">Creo PLM</span>
-                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">Hydraulic Routing & GA Drawing</span>
-                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">Patran / Nastran FEA</span>
-                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">SAP Engineering Release</span>
-                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">Interview Mentoring</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">Creo PLM</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">Hydraulic Routing & GA Drawing</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">Patran / Nastran FEA</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">SAP Engineering Release</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">Interview Mentoring</span>
                     </div>
 
                     <div class="flex flex-wrap gap-4 pt-4">
@@ -126,7 +196,7 @@
 
                 <!-- Academic Highlights Card with ACGCET Crest Logo & Trophy -->
                 <div class="lg:col-span-5">
-                    <div class="glass-panel p-8 rounded-2xl relative shadow-2xl border border-slate-700/80">
+                    <div class="glass-panel p-8 rounded-2xl relative shadow-2xl blueprint-corner border border-slate-700/80">
                         <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
                             <!-- ACGCET Logo SVG Representation -->
                             <div class="flex items-center gap-3">
@@ -148,7 +218,7 @@
 
                         <div class="space-y-6">
                             <div class="border-l-2 border-brand-500 pl-4 py-1">
-                                <p class="text-sm text-slate-400 font-mono">2021 – 2025 | B.E. Mechanical Engineering</p>
+                                <p class="text-sm text-slate-400 font-mono">2021 – 2025 | B.E. Mechanical Engineering[cite: 1]</p>
                                 <p class="text-lg font-bold text-white">ACCET Karaikudi[cite: 1]</p>
                                 <div class="mt-3 flex flex-col gap-2">
                                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/20 text-brand-400 rounded-lg text-sm font-semibold border border-brand-500/30 w-fit">
@@ -174,7 +244,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-slate-900/50">
+    <section id="about" class="py-20 relative z-10 bg-slate-950/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Professional Profile</h2>
@@ -182,7 +252,7 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-6 rounded-xl hover:translate-y-1 transition-all">
+                <div class="glass-card p-6 rounded-xl">
                     <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
                         <i class="fa-solid fa-compass-drafting"></i>
                     </div>
@@ -192,7 +262,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-xl hover:translate-y-1 transition-all">
+                <div class="glass-card p-6 rounded-xl">
                     <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
                         <i class="fa-solid fa-plane"></i>
                     </div>
@@ -202,7 +272,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-xl hover:translate-y-1 transition-all">
+                <div class="glass-card p-6 rounded-xl">
                     <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
                         <i class="fa-solid fa-lightbulb"></i>
                     </div>
@@ -216,7 +286,7 @@
     </section>
 
     <!-- Experience Timeline -->
-    <section id="experience" class="py-20">
+    <section id="experience" class="py-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Career Journey</h2>
@@ -304,7 +374,7 @@
     </section>
 
     <!-- Placement Guidance & Mentorship Section -->
-    <section id="mentorship" class="py-20 bg-slate-900/40">
+    <section id="mentorship" class="py-20 relative z-10 bg-slate-950/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="glass-panel p-8 sm:p-12 rounded-2xl border border-brand-500/30 relative overflow-hidden">
                 <div class="grid md:grid-cols-12 gap-8 items-center">
@@ -335,7 +405,7 @@
     </section>
 
     <!-- Skills & Tools Matrix -->
-    <section id="skills" class="py-20">
+    <section id="skills" class="py-20 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Technical Competencies</h2>
@@ -408,7 +478,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-slate-900/50">
+    <section id="projects" class="py-20 relative z-10 bg-slate-950/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">R&D & Engineering Projects</h2>
@@ -417,7 +487,7 @@
 
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Hybrid MMC Project -->
-                <div class="glass-card p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between">
                     <div>
                         <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Materials R&D</span>
                         <h3 class="text-xl font-bold text-white mt-3 mb-2">Development & Characterization of B4C & Biochar Reinforced Al6061 Hybrid MMC[cite: 1]</h3>
@@ -432,7 +502,7 @@
                 </div>
 
                 <!-- Rough Terrain Wheelchair -->
-                <div class="glass-card p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between">
                     <div>
                         <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Mechanical Design</span>
                         <h3 class="text-xl font-bold text-white mt-3 mb-2">Design & Fabrication of Rough Terrain Wheelchair[cite: 1]</h3>
@@ -447,7 +517,7 @@
                 </div>
 
                 <!-- Automotive Black Box -->
-                <div class="glass-card p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between">
                     <div>
                         <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Automotive & Mechatronics</span>
                         <h3 class="text-xl font-bold text-white mt-3 mb-2">Automotive Black Box & Emergency Safety System[cite: 1]</h3>
@@ -462,7 +532,7 @@
                 </div>
 
                 <!-- IoT Automatic Sewage Cleaner -->
-                <div class="glass-card p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between">
                     <div>
                         <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">IoT & Automation</span>
                         <h3 class="text-xl font-bold text-white mt-3 mb-2">IoT-Based Automatic Sewage Cleaner[cite: 1]</h3>
@@ -480,9 +550,9 @@
     </section>
 
     <!-- Contact & Footer -->
-    <section id="contact" class="py-20 bg-slate-900/80 border-t border-slate-800">
+    <section id="contact" class="py-20 relative z-10 bg-slate-950/90 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-2xl border border-slate-700/80 text-center space-y-8">
+            <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-2xl text-center space-y-8">
                 <div>
                     <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Connect & Collaborate</h2>
                     <p class="text-3xl font-extrabold text-white">Always Ready to Collaborate on New Ideas and Concepts</p>
@@ -513,8 +583,9 @@
         </div>
     </section>
 
+    <!-- Three.js Hydraulic Fluid Ripple & CAD Wireframe Script -->
     <script>
-        // Mobile Navigation Toggle
+        // 1. Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -527,6 +598,92 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
+        });
+
+        // 2. Interactive Three.js Water Ripple & Mechanical Grid Background
+        const canvas = document.getElementById('interactive-bg');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, -20, 25);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        // Hydraulic Wave Fluid Plane
+        const geometry = new THREE.PlaneGeometry(80, 80, 60, 60);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0x0284c7,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.18
+        });
+        const plane = new THREE.Mesh(geometry, material);
+        scene.add(plane);
+
+        // Rotating CAD Mechanical Wireframe Mesh (Icosahedron representing core design node)
+        const cadGeometry = new THREE.IcosahedronGeometry(8, 2);
+        const cadMaterial = new THREE.MeshBasicMaterial({
+            color: 0x38bdf8,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.12
+        });
+        const cadMesh = new THREE.Mesh(cadGeometry, cadMaterial);
+        cadMesh.position.set(20, 10, -5);
+        scene.add(cadMesh);
+
+        // Mouse Interactivity for Water Surface Waves
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        // Animation Loop
+        let clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const elapsedTime = clock.getElapsedTime();
+
+            // Dynamic Ripple Deformation (Hydraulic Flow Waves)
+            const positionAttribute = geometry.attributes.position;
+            for (let i = 0; i < positionAttribute.count; i++) {
+                const u = positionAttribute.getX(i);
+                const v = positionAttribute.getY(i);
+                const z = Math.sin(u * 0.2 + elapsedTime * 1.5) * Math.cos(v * 0.2 + elapsedTime * 1.5) * 1.2
+                        + Math.sin(u * 0.5 + mouseX * 2) * 0.5;
+                positionAttribute.setZ(i, z);
+            }
+            positionAttribute.needsUpdate = true;
+
+            // Smooth CAD mesh rotation
+            cadMesh.rotation.x += 0.003;
+            cadMesh.rotation.y += 0.005;
+
+            // Camera subtle tracking
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+            camera.position.x = targetX * 5;
+            camera.position.y = -20 + (targetY * 5);
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Window Resize Handling
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
