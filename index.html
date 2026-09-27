@@ -22,7 +22,8 @@
                             500: '#0284c7',
                             600: '#0369a1',
                             900: '#0c4a6e',
-                            accent: '#f59e0b'
+                            accent: '#f59e0b',
+                            vibrant: '#00f0ff'
                         }
                     }
                 }
@@ -34,8 +35,8 @@
         .blueprint-bg {
             background-color: #030712;
             background-image: 
-                linear-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+                linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
                 linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
             background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
@@ -43,26 +44,40 @@
         }
 
         .glass-panel {
-            background: rgba(15, 23, 42, 0.82);
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
 
         .glass-card {
-            background: rgba(30, 41, 59, 0.65);
+            background: rgba(30, 41, 59, 0.7);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glass-card:hover {
-            border-color: rgba(56, 189, 248, 0.5);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -10px rgba(2, 132, 199, 0.3);
+            border-color: rgba(56, 189, 248, 0.6);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 16px 32px -8px rgba(2, 132, 199, 0.35);
         }
 
-        /* Blueprint Accent Line */
+        /* Highlight Text Colors */
+        .highlight-cyan {
+            color: #38bdf8;
+            font-weight: 700;
+        }
+        .highlight-amber {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+        .highlight-emerald {
+            color: #34d399;
+            font-weight: 700;
+        }
+
+        /* Blueprint Accent Corner */
         .blueprint-corner {
             position: relative;
         }
@@ -70,7 +85,7 @@
             content: '';
             position: absolute;
             top: 0; left: 0;
-            width: 8px; height: 8px;
+            width: 10px; height: 10px;
             border-top: 2px solid #38bdf8;
             border-left: 2px solid #38bdf8;
         }
@@ -78,7 +93,7 @@
             content: '';
             position: absolute;
             bottom: 0; right: 0;
-            width: 8px; height: 8px;
+            width: 10px; height: 10px;
             border-bottom: 2px solid #38bdf8;
             border-right: 2px solid #38bdf8;
         }
@@ -95,16 +110,16 @@
         }
     </style>
 </head>
-<body class="blueprint-bg text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white relative">
+<body class="blueprint-bg text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white relative space-y-12">
 
-    <!-- Interactive 3D Canvas (Hydraulic Surface Ripples & CAD Geometry) -->
+    <!-- Interactive 3D Canvas (Hydraulic Surface Ripples & Dynamic Particles) -->
     <canvas id="interactive-bg"></canvas>
 
     <!-- Navigation Header -->
     <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
             <a href="#hero" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-500 to-brand-accent flex items-center justify-between p-2 font-bold text-slate-950 text-xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-500 to-brand-accent flex items-center justify-between p-2 font-bold text-slate-950 text-xl shadow-lg shadow-brand-500/30 group-hover:scale-110 transition-transform">
                     <span>M</span><span>T</span>
                 </div>
                 <div>
@@ -118,9 +133,10 @@
                 <a href="#about" class="hover:text-brand-400 transition-colors">About</a>
                 <a href="#experience" class="hover:text-brand-400 transition-colors">Experience</a>
                 <a href="#skills" class="hover:text-brand-400 transition-colors">Skills & Tools</a>
-                <a href="#projects" class="hover:text-brand-400 transition-colors">Projects</a>
+                <a href="#projects" class="hover:text-brand-400 transition-colors">R&D Projects</a>
+                <a href="#analytics" class="hover:text-brand-400 transition-colors">Data Analytics & AI</a>
                 <a href="#mentorship" class="hover:text-brand-400 transition-colors">Mentorship</a>
-                <a href="#contact" class="px-4 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all shadow-md shadow-brand-500/20 hover:shadow-brand-500/40">Contact Me</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-sky-500 hover:from-brand-600 hover:to-sky-600 text-white font-semibold transition-all shadow-lg shadow-brand-500/30 hover:scale-105">Contact Me</a>
             </nav>
 
             <!-- Mobile Menu Toggle Button -->
@@ -134,14 +150,15 @@
             <a href="#about" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">About</a>
             <a href="#experience" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Experience</a>
             <a href="#skills" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Skills & Tools</a>
-            <a href="#projects" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Projects</a>
+            <a href="#projects" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">R&D Projects</a>
+            <a href="#analytics" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Data Analytics & AI</a>
             <a href="#mentorship" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Mentorship</a>
             <a href="#contact" class="block text-center w-full py-2.5 rounded-lg bg-brand-500 text-white font-semibold shadow-md mobile-link">Contact Me</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden z-10">
+    <section id="hero" class="relative pt-36 pb-28 md:pt-48 md:pb-36 overflow-hidden z-10 my-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7 space-y-6">
@@ -152,22 +169,30 @@
                     
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
                         Senior Engineer <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-sky-300 to-brand-accent">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-sky-300 to-amber-300">
                             Hydraulics Module
                         </span>
                     </h1>
+
+                    <!-- Dynamic Tagline Subheading -->
+                    <div class="p-4 rounded-xl bg-slate-900/90 border border-brand-500/40 shadow-xl flex items-center gap-3">
+                        <i class="fa-solid fa-arrows-split-up-and-left text-amber-400 text-xl animate-pulse"></i>
+                        <p class="text-sm font-semibold text-slate-200">
+                            <span class="highlight-amber">From Sales Engineer to Design Engineer</span> — Bridging Core Engineering Rigor with Strategic Technical Marketing.
+                        </p>
+                    </div>
                     
                     <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-                        Mechanical Engineering graduate specializing in **Hydraulic Routing, GA drawing, Creo PLM**, and structural FEA simulations using **MSC Patran & Nastran**. Exploring fundamental aircraft design principles and AI-driven R&D solutions. **Always ready to collaborate on new ideas and concepts.**
+                        Mechanical Engineering graduate proficient across both <span class="highlight-cyan">Technical Core R&D</span> and <span class="highlight-amber">Commercial Engineering</span>. Specialized in <span class="highlight-emerald">Hydraulic Routing, GA Drawing, Creo PLM</span>, <span class="highlight-cyan">Data Analytics</span>, and <span class="highlight-emerald">AI Web Applications</span>.
                     </p>
 
                     <!-- Interactive Live Fluid-Pressure Metric Indicator -->
-                    <div class="p-4 rounded-xl glass-card border-l-4 border-l-brand-400 flex flex-wrap items-center justify-between gap-4 max-w-lg">
+                    <div class="p-4 rounded-xl glass-card border-l-4 border-l-brand-400 flex flex-wrap items-center justify-between gap-4 max-w-lg cursor-pointer hover:border-l-amber-400 transition-colors">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-water text-brand-400 text-2xl animate-pulse"></i>
                             <div>
                                 <p class="text-xs text-slate-400 font-mono">HYDRAULIC FLOW RIPPLE ENGINE</p>
-                                <p class="text-sm font-bold text-white">Move cursor to trigger dynamic fluid wave displacement</p>
+                                <p class="text-sm font-bold text-white">Move or click cursor to trigger fluid wave displacement</p>
                             </div>
                         </div>
                         <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/30">ACTIVE</span>
@@ -175,21 +200,21 @@
 
                     <!-- Quick Skill Tags -->
                     <div class="flex flex-wrap gap-2 pt-2">
-                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">Creo PLM</span>
-                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">Hydraulic Routing & GA Drawing</span>
-                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">Patran / Nastran FEA</span>
-                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">SAP Engineering Release</span>
-                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono shadow-sm">Interview Mentoring</span>
+                        <span class="px-3.5 py-1.5 rounded-lg bg-brand-500/20 border border-brand-500/40 text-brand-300 text-xs font-mono font-bold shadow-sm hover:scale-105 transition-transform cursor-default">Core Engineering & Design</span>
+                        <span class="px-3.5 py-1.5 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-mono font-bold shadow-sm hover:scale-105 transition-transform cursor-default">Technical Sales & Marketing</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono">Creo PLM & GA Drawing</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono">Data Analytics & Python</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/90 border border-slate-700 text-slate-300 text-xs font-mono">AI Web Apps</span>
                     </div>
 
                     <div class="flex flex-wrap gap-4 pt-4">
-                        <a href="#projects" class="px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-medium transition-all shadow-lg shadow-brand-500/25 flex items-center gap-2">
+                        <a href="#projects" class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-sky-500 hover:from-brand-600 hover:to-sky-600 text-white font-semibold transition-all shadow-lg shadow-brand-500/30 hover:scale-105 flex items-center gap-2">
                             <span>View Projects</span>
                             <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
-                        <a href="#contact" class="px-6 py-3 rounded-xl glass-card hover:bg-slate-800 text-slate-200 font-medium transition-all border border-slate-700 flex items-center gap-2">
-                            <i class="fa-solid fa-lightbulb text-brand-accent"></i>
-                            <span>Collaborate On Ideas</span>
+                        <a href="https://github.com/Marudhan" target="_blank" class="px-6 py-3 rounded-xl glass-card hover:bg-slate-800 text-slate-200 font-semibold transition-all border border-slate-700 hover:scale-105 flex items-center gap-2">
+                            <i class="fa-brands fa-github text-amber-400"></i>
+                            <span>GitHub Profile</span>
                         </a>
                     </div>
                 </div>
@@ -198,7 +223,6 @@
                 <div class="lg:col-span-5">
                     <div class="glass-panel p-8 rounded-2xl relative shadow-2xl blueprint-corner border border-slate-700/80">
                         <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
-                            <!-- ACGCET Logo SVG Representation -->
                             <div class="flex items-center gap-3">
                                 <div class="w-12 h-12 rounded-xl bg-slate-800 border border-brand-500/40 flex items-center justify-center p-2 shadow-inner">
                                     <svg viewBox="0 0 100 100" class="w-full h-full fill-brand-400">
@@ -213,28 +237,27 @@
                                     <p class="text-[10px] text-slate-400 font-mono">Govt. College of Engineering</p>
                                 </div>
                             </div>
-                            <i class="fa-solid fa-award text-3xl text-brand-accent"></i>
+                            <i class="fa-solid fa-award text-3xl text-amber-400"></i>
                         </div>
 
                         <div class="space-y-6">
                             <div class="border-l-2 border-brand-500 pl-4 py-1">
-                                <p class="text-sm text-slate-400 font-mono">2021 – 2025 | B.E. Mechanical Engineering[cite: 1]</p>
-                                <p class="text-lg font-bold text-white">ACCET Karaikudi[cite: 1]</p>
+                                <p class="text-sm text-slate-400 font-mono">2021 – 2025 | B.E. Mechanical Engineering</p>
+                                <p class="text-lg font-bold text-white">ACCET Karaikudi</p>
                                 <div class="mt-3 flex flex-col gap-2">
-                                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/20 text-brand-400 rounded-lg text-sm font-semibold border border-brand-500/30 w-fit">
-                                        <span>CGPA: 8.801</span>[cite: 1]
+                                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-brand-500/20 text-brand-300 rounded-lg text-sm font-bold border border-brand-500/40 w-fit">
+                                        <span>CGPA: 8.801</span>
                                     </div>
-                                    <!-- Best All-Round Outgoing Student with Trophy -->
-                                    <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold shadow-md">
+                                    <div class="flex items-center gap-2.5 p-3 rounded-lg bg-amber-500/15 border border-amber-500/40 text-amber-300 text-xs font-bold shadow-md">
                                         <i class="fa-solid fa-trophy text-amber-400 text-base animate-bounce"></i>
-                                        <span>Best All-Round Outgoing Student - 2025</span>[cite: 1]
+                                        <span>Best All-Round Outgoing Student - 2025</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="border-l-2 border-slate-700 pl-4 py-1">
-                                <p class="text-sm text-slate-400 font-mono">2020 – 2021 | Higher Secondary (HSC)[cite: 1]</p>
-                                <p class="text-base font-semibold text-slate-200">OES, Chidambaram[cite: 1]</p>
-                                <p class="text-sm text-brand-400 font-mono mt-1">Score: 90.6%</p>[cite: 1]
+                                <p class="text-sm text-slate-400 font-mono">2020 – 2021 | Higher Secondary (HSC)</p>
+                                <p class="text-base font-semibold text-slate-200">OES, Chidambaram</p>
+                                <p class="text-sm highlight-cyan font-mono mt-1">Score: 90.6%</p>
                             </div>
                         </div>
                     </div>
@@ -244,41 +267,42 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 relative z-10 bg-slate-950/70">
+    <section id="about" class="py-24 relative z-10 bg-slate-950/70 my-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-20">
                 <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Professional Profile</h2>
                 <p class="text-3xl sm:text-4xl font-extrabold text-white">Senior Engineer - Hydraulics Module</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Dual Capability Card -->
+                <div class="glass-card p-8 rounded-xl border-t-4 border-t-amber-400">
+                    <div class="w-12 h-12 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-6 border border-amber-500/20">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Dual Core & Marketing Versatility</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Seamlessly transitioning <span class="highlight-amber">from Sales Engineer to Design Engineer</span>, balancing technical depth in R&D with commercial acumen, client proposals, vendor negotiations, and technical marketing strategy.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl border-t-4 border-t-brand-500">
+                    <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-6 border border-brand-500/20">
                         <i class="fa-solid fa-compass-drafting"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Hydraulic Routing & GA Drawing</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Experienced in complex hydraulic layout routing, General Arrangement (GA) drawing creation, 3D modeling, and assembly integration using Creo Parametric & Creo PLM platforms[cite: 1].
+                    <h3 class="text-xl font-bold text-white mb-3">Hydraulic Routing & GA Drawing</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Experienced in complex hydraulic layout routing, General Assembly (GA) drawing creation, 3D modeling, and assembly integration using <span class="highlight-cyan">Creo Parametric & Creo PLM</span> platforms.
                     </p>
                 </div>
 
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
-                        <i class="fa-solid fa-plane"></i>
+                <div class="glass-card p-8 rounded-xl border-t-4 border-t-sky-400">
+                    <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-6 border border-brand-500/20">
+                        <i class="fa-solid fa-chart-pie"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Aircraft Simulation (Patran/Nastran)</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Actively exploring fundamental core engineering in aircraft structural design, performing finite element modeling and structural simulation on MSC Patran and Nastran platforms.
-                    </p>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
-                        <i class="fa-solid fa-lightbulb"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Open to Collaboration</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">
-                        Always ready to collaborate on new ideas and innovative concepts. Investigating AI-driven R&D solutions for modern engineering problem-solving and system optimization.
+                    <h3 class="text-xl font-bold text-white mb-3">Data Analytics & AI Web Tools</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Extending core engineering solutions with <span class="highlight-emerald">Data Analytics dashboards, Python modeling, and AI-driven interactive web applications</span> to optimize operational workflows and design intelligence.
                     </p>
                 </div>
             </div>
@@ -286,14 +310,14 @@
     </section>
 
     <!-- Experience Timeline -->
-    <section id="experience" class="py-20 relative z-10">
+    <section id="experience" class="py-24 relative z-10 my-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-20">
                 <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Career Journey</h2>
                 <p class="text-3xl sm:text-4xl font-extrabold text-white">Work Experience & Internships</p>
             </div>
 
-            <div class="relative border-l border-slate-800 ml-4 md:ml-32 space-y-12">
+            <div class="relative border-l border-slate-800 ml-4 md:ml-32 space-y-16">
                 
                 <!-- L&T Professional Role -->
                 <div class="relative pl-8 md:pl-10 group">
@@ -301,23 +325,22 @@
                         <i class="fa-solid fa-briefcase"></i>
                     </div>
                     <div class="hidden md:block absolute -left-36 top-2 text-right w-28 text-xs font-mono text-brand-400 font-semibold">
-                        Jun 2026 – Present[cite: 1]
+                        Jun 2026 – Present
                     </div>
-                    <div class="glass-card p-6 sm:p-8 rounded-xl">
-                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div class="glass-card p-8 sm:p-10 rounded-xl">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="text-xl sm:text-2xl font-bold text-white">Senior Engineer - Hydraulics Module</h3>
-                                <p class="text-brand-400 font-medium text-sm">Larsen & Toubro Ltd — Product Development Center (L&T CE-IPDD IC)[cite: 1]</p>
+                                <p class="text-brand-400 font-medium text-sm">Larsen & Toubro Ltd — Product Development Center (L&T CE-IPDD IC)</p>
                             </div>
-                            <span class="md:hidden text-xs font-mono text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded border border-brand-500/20">Jun 2026 – Present[cite: 1]</span>
+                            <span class="md:hidden text-xs font-mono text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded border border-brand-500/20">Jun 2026 – Present</span>
                         </div>
-                        <ul class="mt-4 space-y-2 text-slate-300 text-sm leading-relaxed list-disc list-inside">
-                            <li>Leading hydraulic routing, General Arrangement (GA) drawing creation, and 3D modeling using Creo Parametric & Creo PLM[cite: 1].</li>
-                            <li>Managing design documentation, Bill of Materials (BOM), and engineering release procedures within SAP and specialized remote CAD design software.</li>
-                            <li>Exploring AI-based R&D solutions for modern mechanical design and product development optimization.</li>
-                            <li>Conducting core engineering studies and FEA simulations using MSC Patran and Nastran for structural validation.</li>
-                            <li>Reviewing technical drawings, design specifications, and revision controls for heavy construction and mining equipment projects[cite: 1].</li>
-                            <li>Coordinating with procurement, manufacturing, and logistics teams to resolve technical interface issues[cite: 1].</li>
+                        <ul class="mt-4 space-y-3 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Contributing to R&D initiatives for next-generation engineering challenges while executing remote hydraulic routing, General Assembly (GA) drawing creation, and 3D modeling using <span class="highlight-cyan">Creo Parametric & Creo PLM</span>.</li>
+                            <li>Managing technical product documentation, commercial correspondence, and equipment release procedures within <span class="highlight-amber">SAP software</span>.</li>
+                            <li>Bridging technical design specifications with commercial marketing and procurement requirements for heavy machinery equipment.</li>
+                            <li>Exploring <span class="highlight-emerald">AI-based R&D solutions and Data Analytics dashboards</span> for modern mechanical design and product development optimization.</li>
+                            <li>Conducting core engineering studies and FEA simulations using <span class="highlight-cyan">MSC Patran and Nastran</span> for structural validation.</li>
                         </ul>
                     </div>
                 </div>
@@ -328,20 +351,20 @@
                         <i class="fa-solid fa-industry"></i>
                     </div>
                     <div class="hidden md:block absolute -left-36 top-2 text-right w-28 text-xs font-mono text-slate-400 font-semibold">
-                        Jun 2024 – Jul 2025[cite: 1]
+                        Jun 2024 – Jul 2025
                     </div>
-                    <div class="glass-card p-6 sm:p-8 rounded-xl">
-                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div class="glass-card p-8 sm:p-10 rounded-xl">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="text-xl font-bold text-white">Manufacturing Engineering Intern</h3>
-                                <p class="text-brand-400 font-medium text-sm">Caterpillar India Pvt Ltd (RIOP Division)[cite: 1]</p>
+                                <p class="text-brand-400 font-medium text-sm">Caterpillar India Pvt Ltd (RIOP Division)</p>
                             </div>
-                            <span class="md:hidden text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">Jun 2024 – Jul 2025[cite: 1]</span>
+                            <span class="md:hidden text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">Jun 2024 – Jul 2025</span>
                         </div>
-                        <ul class="mt-4 space-y-2 text-slate-300 text-sm leading-relaxed list-disc list-inside">
-                            <li>Participated in RCCA and Why-Why Analysis for defect identification and root-cause resolution[cite: 1].</li>
-                            <li>Supported manufacturing process monitoring, quality inspection, and Lean Manufacturing workflow improvements[cite: 1].</li>
-                            <li>Assisted in continuous improvement initiatives and updated technical engineering documentation[cite: 1].</li>
+                        <ul class="mt-4 space-y-3 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Participated in <span class="highlight-amber">RCCA and Why-Why Analysis</span> for defect identification and root-cause resolution.</li>
+                            <li>Supported manufacturing process monitoring, quality inspection, and Lean Manufacturing workflow improvements.</li>
+                            <li>Assisted in continuous improvement initiatives and updated technical engineering documentation.</li>
                         </ul>
                     </div>
                 </div>
@@ -352,19 +375,19 @@
                         <i class="fa-solid fa-gears"></i>
                     </div>
                     <div class="hidden md:block absolute -left-36 top-2 text-right w-28 text-xs font-mono text-slate-400 font-semibold">
-                        Jun 2023 – Jul 2023[cite: 1]
+                        Jun 2023 – Jul 2023
                     </div>
-                    <div class="glass-card p-6 sm:p-8 rounded-xl">
-                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                    <div class="glass-card p-8 sm:p-10 rounded-xl">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                             <div>
                                 <h3 class="text-xl font-bold text-white">Production & Process Intern</h3>
-                                <p class="text-brand-400 font-medium text-sm">Excel Die Castings[cite: 1]</p>
+                                <p class="text-brand-400 font-medium text-sm">Excel Die Castings</p>
                             </div>
-                            <span class="md:hidden text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">Jun 2023 – Jul 2023[cite: 1]</span>
+                            <span class="md:hidden text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">Jun 2023 – Jul 2023</span>
                         </div>
-                        <ul class="mt-4 space-y-2 text-slate-300 text-sm leading-relaxed list-disc list-inside">
-                            <li>Supported die-casting production, process documentation, and 5S workplace efficiency practices[cite: 1].</li>
-                            <li>Conducted dimensional and visual quality inspections for manufactured mechanical components[cite: 1].</li>
+                        <ul class="mt-4 space-y-3 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Supported die-casting production, process documentation, and <span class="highlight-emerald">5S workplace efficiency</span> practices.</li>
+                            <li>Conducted dimensional and visual quality inspections for manufactured mechanical components.</li>
                         </ul>
                     </div>
                 </div>
@@ -373,12 +396,97 @@
         </div>
     </section>
 
-    <!-- Placement Guidance & Mentorship Section -->
-    <section id="mentorship" class="py-20 relative z-10 bg-slate-950/60">
+    <!-- Data Analytics & AI Web Projects Section -->
+    <section id="analytics" class="py-24 relative z-10 bg-slate-950/80 my-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="glass-panel p-8 sm:p-12 rounded-2xl border border-brand-500/30 relative overflow-hidden">
-                <div class="grid md:grid-cols-12 gap-8 items-center">
-                    <div class="md:col-span-8 space-y-4">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">GitHub Add-On Showcase</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Data Analytics & AI-Powered Web Applications</p>
+                <p class="text-slate-400 text-sm mt-3">Featured works and open-source projects hosted on <a href="https://github.com/Marudhan" target="_blank" class="text-brand-400 underline hover:text-sky-300">github.com/Marudhan</a></p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Data Analytics & Performance Metrics -->
+                <div class="glass-card p-8 rounded-xl flex flex-col justify-between border-t-4 border-t-cyan-400">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 text-xs font-mono">Data Analytics</span>
+                            <i class="fa-solid fa-chart-column text-cyan-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Industrial Data Analytics Dashboard</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Constructed analytics models and interactive statistical visualizers using <span class="highlight-cyan">Python, Pandas, and Matplotlib</span> for analyzing engineering test parameters, flow rate efficiency, and operational metrics.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Python / Pandas</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Data Visualization</span>
+                        </div>
+                        <a href="https://github.com/Marudhan" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-brand-400 hover:text-white transition-colors">
+                            <span>View Repository</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: AI Web Interface -->
+                <div class="glass-card p-8 rounded-xl flex flex-col justify-between border-t-4 border-t-emerald-400">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 text-xs font-mono">AI Web App</span>
+                            <i class="fa-solid fa-robot text-emerald-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">AI-Assisted Interactive Web Applications</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Developed lightweight, interactive web platforms featuring <span class="highlight-emerald">AI API integrations, responsive WebGL graphics, and automated user interaction workflows</span> for engineering design assistants.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">JavaScript / Tailwind</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">AI UI/UX</span>
+                        </div>
+                        <a href="https://github.com/Marudhan" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-brand-400 hover:text-white transition-colors">
+                            <span>View Repository</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Technical Marketing & Commercial Automation -->
+                <div class="glass-card p-8 rounded-xl flex flex-col justify-between border-t-4 border-t-amber-400">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-mono">Process Automation</span>
+                            <i class="fa-solid fa-calculator text-amber-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Commercial Quote & Analytics Tool</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Automated commercial spreadsheet calculation routines to analyze <span class="highlight-amber">pricing structures, vendor quotation trends, and equipment BOM costs</span> for technical marketing teams.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800 mb-4">
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Data Automation</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Technical Sales</span>
+                        </div>
+                        <a href="https://github.com/Marudhan" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-brand-400 hover:text-white transition-colors">
+                            <span>View Repository</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placement Guidance & Mentorship Section -->
+    <section id="mentorship" class="py-24 relative z-10 bg-slate-950/60 my-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-10 sm:p-14 rounded-2xl border border-brand-500/30 relative overflow-hidden">
+                <div class="grid md:grid-cols-12 gap-10 items-center">
+                    <div class="md:col-span-8 space-y-5">
                         <span class="px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold uppercase tracking-wider">
                             Giving Back to the Student Community
                         </span>
@@ -386,16 +494,16 @@
                             Placement Guidance Speaker & Interview Mentor
                         </h2>
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            Available as a **Placement Guidance Speaker** and for **Company-Based Interview Mentoring**. Helping engineering students and fresh graduates prepare for technical core interviews, resume structuring, CAD competency evaluation, and corporate placement processes.
+                            Available as a <span class="highlight-amber">Placement Guidance Speaker</span> and for <span class="highlight-cyan">Company-Based Interview Mentoring</span>. Helping engineering students prepare for core technical roles, sales & applications engineering interviews, resume structuring, and corporate placement processes.
                         </p>
                         <div class="flex flex-wrap gap-4 pt-2">
-                            <a href="#contact" class="px-5 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-medium text-sm transition-all shadow-md shadow-brand-500/20">
+                            <a href="#contact" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-sky-500 hover:from-brand-600 hover:to-sky-600 text-white font-semibold text-sm transition-all shadow-md shadow-brand-500/20 hover:scale-105">
                                 Request Mentoring Session
                             </a>
                         </div>
                     </div>
                     <div class="md:col-span-4 flex justify-center">
-                        <div class="w-32 h-32 rounded-full bg-slate-800/80 border-2 border-brand-400/40 flex items-center justify-center text-brand-400 text-5xl shadow-xl shadow-brand-500/10">
+                        <div class="w-36 h-36 rounded-full bg-slate-800/80 border-2 border-brand-400/40 flex items-center justify-center text-brand-400 text-5xl shadow-xl shadow-brand-500/10 hover:rotate-12 transition-transform">
                             <i class="fa-solid fa-chalkboard-user"></i>
                         </div>
                     </div>
@@ -405,72 +513,68 @@
     </section>
 
     <!-- Skills & Tools Matrix -->
-    <section id="skills" class="py-20 relative z-10">
+    <section id="skills" class="py-24 relative z-10 my-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Technical Competencies</h2>
-                <p class="text-3xl sm:text-4xl font-extrabold text-white">Skills, Software & Certifications</p>
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Technical & Commercial Competencies</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Skills, Software & Dual Domain Mastery</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- CAD & Design -->
-                <div class="glass-card p-6 rounded-xl border-t-4 border-t-brand-500">
-                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Commercial & Technical Marketing -->
+                <div class="glass-card p-8 rounded-xl border-t-4 border-t-amber-400">
+                    <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line text-amber-400"></i>
+                        Commercial & Marketing
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-amber-300 border border-amber-500/30">Technical Sales</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-amber-300 border border-amber-500/30">Commercial Assistant</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Vendor Management</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Client Proposals</span>
+                    </div>
+                </div>
+
+                <!-- CAD & PLM -->
+                <div class="glass-card p-8 rounded-xl border-t-4 border-t-brand-500">
+                    <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
                         <i class="fa-solid fa-cube text-brand-400"></i>
                         CAD & PLM Systems
                     </h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Creo Parametric[cite: 1]</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Creo Parametric</span>
                         <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-brand-400 border border-brand-500/30">Creo PLM</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">AutoCAD[cite: 1]</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Fusion 360[cite: 1]</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Assembly Modeling[cite: 1]</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">AutoCAD</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Fusion 360</span>
                     </div>
                 </div>
 
-                <!-- Hydraulic & Core Engineering -->
-                <div class="glass-card p-6 rounded-xl border-t-4 border-t-sky-400">
-                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-oil-well text-sky-400"></i>
-                        Hydraulics & Simulation
+                <!-- Data Analytics & AI Web -->
+                <div class="glass-card p-8 rounded-xl border-t-4 border-t-cyan-400">
+                    <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+                        <i class="fa-solid fa-laptop-code text-cyan-400"></i>
+                        Data & AI Tech
                     </h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-sky-400 border border-sky-500/30">Hydraulic Routing</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-sky-400 border border-sky-500/30">GA Drawing</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-sky-400 border border-sky-500/30">MSC Patran</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-sky-400 border border-sky-500/30">MSC Nastran</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Aircraft Simulation</span>
-                    </div>
-                </div>
-
-                <!-- Design Documentation & Enterprise -->
-                <div class="glass-card p-6 rounded-xl border-t-4 border-t-emerald-400">
-                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-file-contract text-emerald-400"></i>
-                        PLM & Management
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-emerald-400 border border-emerald-500/30">SAP Integration</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">GD&T Principles[cite: 1]</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">BOM Preparation[cite: 1]</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Revision Control[cite: 1]</span>
-                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Remote CAD Software</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-cyan-300 border border-cyan-500/30">Python Analytics</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-cyan-300 border border-cyan-500/30">AI Web Apps</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Tailwind CSS</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Git / GitHub</span>
                     </div>
                 </div>
 
                 <!-- Certifications -->
-                <div class="glass-card p-6 rounded-xl border-t-4 border-t-brand-accent">
-                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-award text-brand-accent"></i>
+                <div class="glass-card p-8 rounded-xl border-t-4 border-t-emerald-400">
+                    <h3 class="text-lg font-bold text-white mb-5 flex items-center gap-2">
+                        <i class="fa-solid fa-award text-emerald-400"></i>
                         Certifications
                     </h3>
-                    <ul class="space-y-1.5 text-xs text-slate-300">
-                        <li>• Six Sigma White Belt[cite: 1]</li>
-                        <li>• GD&T Fundamentals[cite: 1]</li>
-                        <li>• Mechanical System Design[cite: 1]</li>
-                        <li>• Design for Manufacturing (DFM)[cite: 1]</li>
-                        <li>• Tolerance Analysis[cite: 1]</li>
-                        <li>• AutoCAD Essential Training[cite: 1]</li>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li>• Six Sigma White Belt</li>
+                        <li>• GD&T Fundamentals</li>
+                        <li>• Mechanical System Design</li>
+                        <li>• Design for Manufacturing (DFM)</li>
+                        <li>• AutoCAD Essential Training</li>
                     </ul>
                 </div>
             </div>
@@ -478,71 +582,41 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 relative z-10 bg-slate-950/60">
+    <section id="projects" class="py-24 relative z-10 bg-slate-950/60 my-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-20">
                 <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">R&D & Engineering Projects</h2>
-                <p class="text-3xl sm:text-4xl font-extrabold text-white">Innovation & System Development</p>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Mechanical Innovation & System Development</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 gap-10">
                 <!-- Hybrid MMC Project -->
-                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between">
+                <div class="glass-card p-8 sm:p-10 rounded-xl flex flex-col justify-between">
                     <div>
                         <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Materials R&D</span>
-                        <h3 class="text-xl font-bold text-white mt-3 mb-2">Development & Characterization of B4C & Biochar Reinforced Al6061 Hybrid MMC[cite: 1]</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            Designed experimental specimens and manufacturing specifications for hybrid composite development. Performed tensile, impact, hardness, and wear testing for design validation[cite: 1].
+                        <h3 class="text-xl font-bold text-white mt-3 mb-3">Development & Characterization of B4C & Biochar Reinforced Al6061 Hybrid MMC</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Designed experimental specimens and manufacturing specifications for hybrid composite development. Performed tensile, impact, hardness, and wear testing for design validation.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Material Analysis[cite: 1]</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Tensile/Wear Testing[cite: 1]</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Material Analysis</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Tensile/Wear Testing</span>
                     </div>
                 </div>
 
                 <!-- Rough Terrain Wheelchair -->
-                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between">
+                <div class="glass-card p-8 sm:p-10 rounded-xl flex flex-col justify-between">
                     <div>
                         <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Mechanical Design</span>
-                        <h3 class="text-xl font-bold text-white mt-3 mb-2">Design & Fabrication of Rough Terrain Wheelchair[cite: 1]</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            Developed 3D CAD assembly models and fabrication drawings for a rough-terrain mobility system[cite: 1]. Applied design optimization for enhanced stability and ergonomics on uneven surfaces[cite: 1].
+                        <h3 class="text-xl font-bold text-white mt-3 mb-3">Design & Fabrication of Rough Terrain Wheelchair</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            Developed 3D CAD assembly models and fabrication drawings for a rough-terrain mobility system. Applied design optimization for enhanced stability and ergonomics on uneven surfaces.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">3D CAD Modeling[cite: 1]</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Ergonomics[cite: 1]</span>
-                    </div>
-                </div>
-
-                <!-- Automotive Black Box -->
-                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between">
-                    <div>
-                        <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Automotive & Mechatronics</span>
-                        <h3 class="text-xl font-bold text-white mt-3 mb-2">Automotive Black Box & Emergency Safety System[cite: 1]</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            Created conceptual mechanical layouts, assembly concepts, and engineering documentation for integrating mechatronic sensors and automated safety systems[cite: 1].
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">CAD Layouts[cite: 1]</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Safety Systems[cite: 1]</span>
-                    </div>
-                </div>
-
-                <!-- IoT Automatic Sewage Cleaner -->
-                <div class="glass-card p-6 sm:p-8 rounded-xl flex flex-col justify-between">
-                    <div>
-                        <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">IoT & Automation</span>
-                        <h3 class="text-xl font-bold text-white mt-3 mb-2">IoT-Based Automatic Sewage Cleaner[cite: 1]</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
-                            Designed an automated waste collection mechanism utilizing infrared sensors for waste detection and continuous dry resource recycling[cite: 1].
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">IoT Integration[cite: 1]</span>
-                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Mechanism Design[cite: 1]</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">3D CAD Modeling</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Ergonomics</span>
                     </div>
                 </div>
             </div>
@@ -550,42 +624,42 @@
     </section>
 
     <!-- Contact & Footer -->
-    <section id="contact" class="py-20 relative z-10 bg-slate-950/90 border-t border-slate-800">
+    <section id="contact" class="py-24 relative z-10 bg-slate-950/90 border-t border-slate-800 my-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-2xl text-center space-y-8">
+            <div class="max-w-4xl mx-auto glass-panel p-10 sm:p-14 rounded-2xl text-center space-y-10">
                 <div>
                     <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Connect & Collaborate</h2>
                     <p class="text-3xl font-extrabold text-white">Always Ready to Collaborate on New Ideas and Concepts</p>
+                    <p class="text-slate-300 text-sm mt-3">Available for Core Engineering, Data Analytics, Applications Design, or Technical Sales/Marketing Opportunities.</p>
                 </div>
 
                 <div class="grid sm:grid-cols-3 gap-6 text-left">
-                    <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
-                        <i class="fa-regular fa-envelope text-brand-400 text-xl mb-2"></i>
+                    <div class="p-5 rounded-xl bg-slate-800/60 border border-slate-700 hover:border-brand-500 transition-colors">
+                        <i class="fa-regular fa-envelope text-brand-400 text-xl mb-3"></i>
                         <p class="text-xs text-slate-400 font-mono">EMAIL</p>
-                        <a href="mailto:thirumarudhan@gmail.com" class="text-sm font-semibold text-white hover:text-brand-400 truncate block">thirumarudhan@gmail.com[cite: 1]</a>
+                        <a href="mailto:thirumarudhan@gmail.com" class="text-sm font-semibold text-white hover:text-brand-400 truncate block">thirumarudhan@gmail.com</a>
                     </div>
-                    <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
-                        <i class="fa-solid fa-phone text-brand-400 text-xl mb-2"></i>
+                    <div class="p-5 rounded-xl bg-slate-800/60 border border-slate-700 hover:border-brand-500 transition-colors">
+                        <i class="fa-solid fa-phone text-brand-400 text-xl mb-3"></i>
                         <p class="text-xs text-slate-400 font-mono">MOBILE</p>
-                        <a href="tel:7094875920" class="text-sm font-semibold text-white hover:text-brand-400 block">+91 7094875920[cite: 1]</a>
+                        <a href="tel:7094875920" class="text-sm font-semibold text-white hover:text-brand-400 block">+91 7094875920</a>
                     </div>
-                    <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
-                        <i class="fa-brands fa-linkedin-in text-brand-400 text-xl mb-2"></i>
-                        <p class="text-xs text-slate-400 font-mono">LINKEDIN</p>
-                        <a href="https://www.linkedin.com/in/marudhanthirumavalavan" target="_blank" class="text-sm font-semibold text-white hover:text-brand-400 truncate block">marudhanthirumavalavan[cite: 1]</a>
+                    <div class="p-5 rounded-xl bg-slate-800/60 border border-slate-700 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-github text-brand-400 text-xl mb-3"></i>
+                        <p class="text-xs text-slate-400 font-mono">GITHUB</p>
+                        <a href="https://github.com/Marudhan" target="_blank" class="text-sm font-semibold text-white hover:text-brand-400 truncate block">github.com/Marudhan</a>
                     </div>
                 </div>
 
-                <div class="pt-6 border-t border-slate-800 text-xs text-slate-500 font-mono">
-                    © 2026 Marudhan T. Senior Engineer - Hydraulics Module | L&T CE-IPDD IC[cite: 1].
+                <div class="pt-8 border-t border-slate-800 text-xs text-slate-500 font-mono">
+                    © 2026 Marudhan T. Senior Engineer - Hydraulics Module | L&T CE-IPDD IC.
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Three.js Hydraulic Fluid Ripple & CAD Wireframe Script -->
+    <!-- Three.js Hydraulic Fluid Ripple, Particle & Interactive CAD Script -->
     <script>
-        // 1. Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -600,7 +674,6 @@
             });
         });
 
-        // 2. Interactive Three.js Water Ripple & Mechanical Grid Background
         const canvas = document.getElementById('interactive-bg');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -611,75 +684,97 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-        // Hydraulic Wave Fluid Plane
-        const geometry = new THREE.PlaneGeometry(80, 80, 60, 60);
+        // Hydraulic Wave Grid Plane
+        const geometry = new THREE.PlaneGeometry(90, 90, 70, 70);
         const material = new THREE.MeshBasicMaterial({
             color: 0x0284c7,
             wireframe: true,
             transparent: true,
-            opacity: 0.18
+            opacity: 0.22
         });
         const plane = new THREE.Mesh(geometry, material);
         scene.add(plane);
 
-        // Rotating CAD Mechanical Wireframe Mesh (Icosahedron representing core design node)
-        const cadGeometry = new THREE.IcosahedronGeometry(8, 2);
+        // Rotating Wireframe Core Assembly
+        const cadGeometry = new THREE.IcosahedronGeometry(9, 2);
         const cadMaterial = new THREE.MeshBasicMaterial({
             color: 0x38bdf8,
             wireframe: true,
             transparent: true,
-            opacity: 0.12
+            opacity: 0.15
         });
         const cadMesh = new THREE.Mesh(cadGeometry, cadMaterial);
-        cadMesh.position.set(20, 10, -5);
+        cadMesh.position.set(22, 12, -5);
         scene.add(cadMesh);
 
-        // Mouse Interactivity for Water Surface Waves
+        // Floating Dynamic Particle System for Interactivity
+        const particlesCount = 150;
+        const particleGeometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particlesCount * 3);
+
+        for (let i = 0; i < particlesCount * 3; i++) {
+            positions[i] = (Math.random() - 0.5) * 80;
+        }
+
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const particleMaterial = new THREE.PointsMaterial({
+            size: 0.6,
+            color: 0xfbbf24,
+            transparent: true,
+            opacity: 0.5
+        });
+        const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
+        scene.add(particleSystem);
+
         let mouseX = 0;
         let mouseY = 0;
         let targetX = 0;
         let targetY = 0;
+        let clickPulse = 0;
 
         document.addEventListener('mousemove', (event) => {
             mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
             mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
         });
 
-        // Animation Loop
+        document.addEventListener('click', () => {
+            clickPulse = 2.5;
+        });
+
         let clock = new THREE.Clock();
 
         function animate() {
             requestAnimationFrame(animate);
 
             const elapsedTime = clock.getElapsedTime();
+            if (clickPulse > 0) clickPulse -= 0.05;
 
-            // Dynamic Ripple Deformation (Hydraulic Flow Waves)
+            // Interactive Ripple Mechanics
             const positionAttribute = geometry.attributes.position;
             for (let i = 0; i < positionAttribute.count; i++) {
                 const u = positionAttribute.getX(i);
                 const v = positionAttribute.getY(i);
-                const z = Math.sin(u * 0.2 + elapsedTime * 1.5) * Math.cos(v * 0.2 + elapsedTime * 1.5) * 1.2
-                        + Math.sin(u * 0.5 + mouseX * 2) * 0.5;
+                const z = Math.sin(u * 0.2 + elapsedTime * 1.8) * Math.cos(v * 0.2 + elapsedTime * 1.8) * (1.2 + clickPulse)
+                        + Math.sin(u * 0.4 + mouseX * 2) * 0.6;
                 positionAttribute.setZ(i, z);
             }
             positionAttribute.needsUpdate = true;
 
-            // Smooth CAD mesh rotation
-            cadMesh.rotation.x += 0.003;
-            cadMesh.rotation.y += 0.005;
+            // Smooth CAD mesh and particle animations
+            cadMesh.rotation.x += 0.004;
+            cadMesh.rotation.y += 0.006;
+            particleSystem.rotation.y = elapsedTime * 0.05;
 
-            // Camera subtle tracking
             targetX += (mouseX - targetX) * 0.05;
             targetY += (mouseY - targetY) * 0.05;
-            camera.position.x = targetX * 5;
-            camera.position.y = -20 + (targetY * 5);
+            camera.position.x = targetX * 6;
+            camera.position.y = -20 + (targetY * 6);
 
             renderer.render(scene, camera);
         }
 
         animate();
 
-        // Window Resize Handling
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
