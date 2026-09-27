@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marudhan T | Senior Engineer - Hydraulics Module</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            900: '#0c4a6e',
+                            accent: '#f59e0b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-500 to-brand-accent flex items-center justify-between p-2 font-bold text-slate-950 text-xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+                    <span>M</span><span>T</span>
+                </div>
+                <div>
+                    <span class="text-lg font-bold text-white tracking-wide block">MARUDHAN T</span>
+                    <span class="text-xs text-brand-400 font-mono">SENIOR ENGINEER - HYDRAULICS MODULE</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-brand-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-brand-400 transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-brand-400 transition-colors">Skills & Tools</a>
+                <a href="#projects" class="hover:text-brand-400 transition-colors">Projects</a>
+                <a href="#mentorship" class="hover:text-brand-400 transition-colors">Mentorship</a>
+                <a href="#contact" class="px-4 py-2 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all shadow-md shadow-brand-500/20 hover:shadow-brand-500/40">Contact Me</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 text-xl focus:outline-none" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-slate-950/95 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">About</a>
+            <a href="#experience" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Experience</a>
+            <a href="#skills" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Skills & Tools</a>
+            <a href="#projects" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Projects</a>
+            <a href="#mentorship" class="block text-slate-300 hover:text-brand-400 text-base font-medium mobile-link">Mentorship</a>
+            <a href="#contact" class="block text-center w-full py-2.5 rounded-lg bg-brand-500 text-white font-semibold shadow-md mobile-link">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-900/40 via-slate-950 to-slate-950 -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                        Product Development Center | L&T CE-IPDD IC
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Senior Engineer <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-sky-300 to-brand-accent">
+                            Hydraulics Module
+                        </span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+                        Mechanical Engineering graduate specializing in **Hydraulic Routing, GA drawing, Creo PLM**, and advanced structural simulations using **MSC Patran & Nastran**. Exploring fundamental aircraft design principles and AI-driven R&D solutions. **Always ready to collaborate on new ideas and concepts.**
+                    </p>
+
+                    <!-- Quick Skill Tags -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">Creo PLM</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">Hydraulic Routing & GA Drawing</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">Patran / Nastran FEA</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">SAP Engineering Release</span>
+                        <span class="px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">Interview Mentoring</span>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#projects" class="px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-medium transition-all shadow-lg shadow-brand-500/25 flex items-center gap-2">
+                            <span>View Projects</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#contact" class="px-6 py-3 rounded-xl glass-card hover:bg-slate-800 text-slate-200 font-medium transition-all border border-slate-700 flex items-center gap-2">
+                            <i class="fa-solid fa-lightbulb text-brand-accent"></i>
+                            <span>Collaborate On Ideas</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Academic Highlights Card with ACGCET Crest Logo & Trophy -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel p-8 rounded-2xl relative shadow-2xl border border-slate-700/80">
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+                            <!-- ACGCET Logo SVG Representation -->
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-slate-800 border border-brand-500/40 flex items-center justify-center p-2 shadow-inner">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full fill-brand-400">
+                                        <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="none" stroke="currentColor" stroke-width="6"/>
+                                        <path d="M50 15 L80 30 L50 45 L20 30 Z" fill="currentColor"/>
+                                        <rect x="45" y="45" width="10" height="35" fill="currentColor"/>
+                                        <circle cx="50" cy="50" r="18" fill="none" stroke="#f59e0b" stroke-width="5"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs font-bold text-slate-200 tracking-wider">ACGCET, KARAIKUDI</h4>
+                                    <p class="text-[10px] text-slate-400 font-mono">Govt. College of Engineering</p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-award text-3xl text-brand-accent"></i>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="border-l-2 border-brand-500 pl-4 py-1">
+                                <p class="text-sm text-slate-400 font-mono">2021 – 2025 | B.E. Mechanical Engineering</p>
+                                <p class="text-lg font-bold text-white">ACCET Karaikudi[cite: 1]</p>
+                                <div class="mt-3 flex flex-col gap-2">
+                                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/20 text-brand-400 rounded-lg text-sm font-semibold border border-brand-500/30 w-fit">
+                                        <span>CGPA: 8.801</span>[cite: 1]
+                                    </div>
+                                    <!-- Best All-Round Outgoing Student with Trophy -->
+                                    <div class="flex items-center gap-2.5 p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold shadow-md">
+                                        <i class="fa-solid fa-trophy text-amber-400 text-base animate-bounce"></i>
+                                        <span>Best All-Round Outgoing Student - 2025</span>[cite: 1]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-l-2 border-slate-700 pl-4 py-1">
+                                <p class="text-sm text-slate-400 font-mono">2020 – 2021 | Higher Secondary (HSC)[cite: 1]</p>
+                                <p class="text-base font-semibold text-slate-200">OES, Chidambaram[cite: 1]</p>
+                                <p class="text-sm text-brand-400 font-mono mt-1">Score: 90.6%</p>[cite: 1]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Professional Profile</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Senior Engineer - Hydraulics Module</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-xl hover:translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Hydraulic Routing & GA Drawing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Experienced in complex hydraulic layout routing, General Arrangement (GA) drawing creation, 3D modeling, and assembly integration using Creo Parametric & Creo PLM platforms[cite: 1].
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl hover:translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Aircraft Simulation (Patran/Nastran)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Actively exploring fundamental core engineering in aircraft structural design, performing finite element modeling and structural simulation on MSC Patran and Nastran platforms.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-xl hover:translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-lg bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl mb-4 border border-brand-500/20">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Open to Collaboration</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Always ready to collaborate on new ideas and innovative concepts. Investigating AI-driven R&D solutions for modern engineering problem-solving and system optimization.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Career Journey</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Work Experience & Internships</p>
+            </div>
+
+            <div class="relative border-l border-slate-800 ml-4 md:ml-32 space-y-12">
+                
+                <!-- L&T Professional Role -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-brand-500 border-4 border-slate-950 flex items-center justify-center text-white text-xs font-bold shadow-lg shadow-brand-500/30">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="hidden md:block absolute -left-36 top-2 text-right w-28 text-xs font-mono text-brand-400 font-semibold">
+                        Jun 2026 – Present[cite: 1]
+                    </div>
+                    <div class="glass-card p-6 sm:p-8 rounded-xl">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white">Senior Engineer - Hydraulics Module</h3>
+                                <p class="text-brand-400 font-medium text-sm">Larsen & Toubro Ltd — Product Development Center (L&T CE-IPDD IC)[cite: 1]</p>
+                            </div>
+                            <span class="md:hidden text-xs font-mono text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded border border-brand-500/20">Jun 2026 – Present[cite: 1]</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Leading hydraulic routing, General Arrangement (GA) drawing creation, and 3D modeling using Creo Parametric & Creo PLM[cite: 1].</li>
+                            <li>Managing design documentation, Bill of Materials (BOM), and engineering release procedures within SAP and specialized remote CAD design software.</li>
+                            <li>Exploring AI-based R&D solutions for modern mechanical design and product development optimization.</li>
+                            <li>Conducting core engineering studies and FEA simulations using MSC Patran and Nastran for structural validation.</li>
+                            <li>Reviewing technical drawings, design specifications, and revision controls for heavy construction and mining equipment projects[cite: 1].</li>
+                            <li>Coordinating with procurement, manufacturing, and logistics teams to resolve technical interface issues[cite: 1].</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Caterpillar Internship -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-800 border-4 border-slate-950 flex items-center justify-center text-slate-400 text-xs font-bold">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <div class="hidden md:block absolute -left-36 top-2 text-right w-28 text-xs font-mono text-slate-400 font-semibold">
+                        Jun 2024 – Jul 2025[cite: 1]
+                    </div>
+                    <div class="glass-card p-6 sm:p-8 rounded-xl">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Manufacturing Engineering Intern</h3>
+                                <p class="text-brand-400 font-medium text-sm">Caterpillar India Pvt Ltd (RIOP Division)[cite: 1]</p>
+                            </div>
+                            <span class="md:hidden text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">Jun 2024 – Jul 2025[cite: 1]</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Participated in RCCA and Why-Why Analysis for defect identification and root-cause resolution[cite: 1].</li>
+                            <li>Supported manufacturing process monitoring, quality inspection, and Lean Manufacturing workflow improvements[cite: 1].</li>
+                            <li>Assisted in continuous improvement initiatives and updated technical engineering documentation[cite: 1].</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Excel Die Castings Internship -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-800 border-4 border-slate-950 flex items-center justify-center text-slate-400 text-xs font-bold">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <div class="hidden md:block absolute -left-36 top-2 text-right w-28 text-xs font-mono text-slate-400 font-semibold">
+                        Jun 2023 – Jul 2023[cite: 1]
+                    </div>
+                    <div class="glass-card p-6 sm:p-8 rounded-xl">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Production & Process Intern</h3>
+                                <p class="text-brand-400 font-medium text-sm">Excel Die Castings[cite: 1]</p>
+                            </div>
+                            <span class="md:hidden text-xs font-mono text-slate-400 bg-slate-800 px-2.5 py-1 rounded">Jun 2023 – Jul 2023[cite: 1]</span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Supported die-casting production, process documentation, and 5S workplace efficiency practices[cite: 1].</li>
+                            <li>Conducted dimensional and visual quality inspections for manufactured mechanical components[cite: 1].</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Placement Guidance & Mentorship Section -->
+    <section id="mentorship" class="py-20 bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-panel p-8 sm:p-12 rounded-2xl border border-brand-500/30 relative overflow-hidden">
+                <div class="grid md:grid-cols-12 gap-8 items-center">
+                    <div class="md:col-span-8 space-y-4">
+                        <span class="px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-semibold uppercase tracking-wider">
+                            Giving Back to the Student Community
+                        </span>
+                        <h2 class="text-3xl font-extrabold text-white">
+                            Placement Guidance Speaker & Interview Mentor
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Available as a **Placement Guidance Speaker** and for **Company-Based Interview Mentoring**. Helping engineering students and fresh graduates prepare for technical core interviews, resume structuring, CAD competency evaluation, and corporate placement processes.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <a href="#contact" class="px-5 py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-medium text-sm transition-all shadow-md shadow-brand-500/20">
+                                Request Mentoring Session
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:col-span-4 flex justify-center">
+                        <div class="w-32 h-32 rounded-full bg-slate-800/80 border-2 border-brand-400/40 flex items-center justify-center text-brand-400 text-5xl shadow-xl shadow-brand-500/10">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Tools Matrix -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Technical Competencies</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Skills, Software & Certifications</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- CAD & Design -->
+                <div class="glass-card p-6 rounded-xl border-t-4 border-t-brand-500">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-cube text-brand-400"></i>
+                        CAD & PLM Systems
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Creo Parametric[cite: 1]</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-brand-400 border border-brand-500/30">Creo PLM</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">AutoCAD[cite: 1]</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Fusion 360[cite: 1]</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Assembly Modeling[cite: 1]</span>
+                    </div>
+                </div>
+
+                <!-- Hydraulic & Core Engineering -->
+                <div class="glass-card p-6 rounded-xl border-t-4 border-t-sky-400">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-oil-well text-sky-400"></i>
+                        Hydraulics & Simulation
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-sky-400 border border-sky-500/30">Hydraulic Routing</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-sky-400 border border-sky-500/30">GA Drawing</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-sky-400 border border-sky-500/30">MSC Patran</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-sky-400 border border-sky-500/30">MSC Nastran</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Aircraft Simulation</span>
+                    </div>
+                </div>
+
+                <!-- Design Documentation & Enterprise -->
+                <div class="glass-card p-6 rounded-xl border-t-4 border-t-emerald-400">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-file-contract text-emerald-400"></i>
+                        PLM & Management
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-emerald-400 border border-emerald-500/30">SAP Integration</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">GD&T Principles[cite: 1]</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">BOM Preparation[cite: 1]</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Revision Control[cite: 1]</span>
+                        <span class="px-2.5 py-1 rounded bg-slate-800 text-xs font-mono text-slate-200">Remote CAD Software</span>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="glass-card p-6 rounded-xl border-t-4 border-t-brand-accent">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-award text-brand-accent"></i>
+                        Certifications
+                    </h3>
+                    <ul class="space-y-1.5 text-xs text-slate-300">
+                        <li>• Six Sigma White Belt[cite: 1]</li>
+                        <li>• GD&T Fundamentals[cite: 1]</li>
+                        <li>• Mechanical System Design[cite: 1]</li>
+                        <li>• Design for Manufacturing (DFM)[cite: 1]</li>
+                        <li>• Tolerance Analysis[cite: 1]</li>
+                        <li>• AutoCAD Essential Training[cite: 1]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">R&D & Engineering Projects</h2>
+                <p class="text-3xl sm:text-4xl font-extrabold text-white">Innovation & System Development</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Hybrid MMC Project -->
+                <div class="glass-card p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Materials R&D</span>
+                        <h3 class="text-xl font-bold text-white mt-3 mb-2">Development & Characterization of B4C & Biochar Reinforced Al6061 Hybrid MMC[cite: 1]</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Designed experimental specimens and manufacturing specifications for hybrid composite development. Performed tensile, impact, hardness, and wear testing for design validation[cite: 1].
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Material Analysis[cite: 1]</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Tensile/Wear Testing[cite: 1]</span>
+                    </div>
+                </div>
+
+                <!-- Rough Terrain Wheelchair -->
+                <div class="glass-card p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Mechanical Design</span>
+                        <h3 class="text-xl font-bold text-white mt-3 mb-2">Design & Fabrication of Rough Terrain Wheelchair[cite: 1]</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Developed 3D CAD assembly models and fabrication drawings for a rough-terrain mobility system[cite: 1]. Applied design optimization for enhanced stability and ergonomics on uneven surfaces[cite: 1].
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">3D CAD Modeling[cite: 1]</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Ergonomics[cite: 1]</span>
+                    </div>
+                </div>
+
+                <!-- Automotive Black Box -->
+                <div class="glass-card p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">Automotive & Mechatronics</span>
+                        <h3 class="text-xl font-bold text-white mt-3 mb-2">Automotive Black Box & Emergency Safety System[cite: 1]</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Created conceptual mechanical layouts, assembly concepts, and engineering documentation for integrating mechatronic sensors and automated safety systems[cite: 1].
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">CAD Layouts[cite: 1]</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Safety Systems[cite: 1]</span>
+                    </div>
+                </div>
+
+                <!-- IoT Automatic Sewage Cleaner -->
+                <div class="glass-card p-6 sm:p-8 rounded-xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <span class="px-2.5 py-1 rounded bg-brand-500/10 text-brand-400 text-xs font-mono">IoT & Automation</span>
+                        <h3 class="text-xl font-bold text-white mt-3 mb-2">IoT-Based Automatic Sewage Cleaner[cite: 1]</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Designed an automated waste collection mechanism utilizing infrared sensors for waste detection and continuous dry resource recycling[cite: 1].
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-800">
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">IoT Integration[cite: 1]</span>
+                        <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] text-slate-300 font-mono">Mechanism Design[cite: 1]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <section id="contact" class="py-20 bg-slate-900/80 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto glass-panel p-8 sm:p-12 rounded-2xl border border-slate-700/80 text-center space-y-8">
+                <div>
+                    <h2 class="text-xs font-mono font-semibold text-brand-400 tracking-widest uppercase mb-2">Connect & Collaborate</h2>
+                    <p class="text-3xl font-extrabold text-white">Always Ready to Collaborate on New Ideas and Concepts</p>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-6 text-left">
+                    <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
+                        <i class="fa-regular fa-envelope text-brand-400 text-xl mb-2"></i>
+                        <p class="text-xs text-slate-400 font-mono">EMAIL</p>
+                        <a href="mailto:thirumarudhan@gmail.com" class="text-sm font-semibold text-white hover:text-brand-400 truncate block">thirumarudhan@gmail.com[cite: 1]</a>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
+                        <i class="fa-solid fa-phone text-brand-400 text-xl mb-2"></i>
+                        <p class="text-xs text-slate-400 font-mono">MOBILE</p>
+                        <a href="tel:7094875920" class="text-sm font-semibold text-white hover:text-brand-400 block">+91 7094875920[cite: 1]</a>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700">
+                        <i class="fa-brands fa-linkedin-in text-brand-400 text-xl mb-2"></i>
+                        <p class="text-xs text-slate-400 font-mono">LINKEDIN</p>
+                        <a href="https://www.linkedin.com/in/marudhanthirumavalavan" target="_blank" class="text-sm font-semibold text-white hover:text-brand-400 truncate block">marudhanthirumavalavan[cite: 1]</a>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-800 text-xs text-slate-500 font-mono">
+                    © 2026 Marudhan T. Senior Engineer - Hydraulics Module | L&T CE-IPDD IC[cite: 1].
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
